@@ -1,0 +1,37 @@
+# Starship prompt
+eval "$(starship init zsh)"
+
+# Plugin completamento
+autoload -Uz compinit
+compinit
+
+# Plugin suggerimenti e syntax highlight
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# Alias
+alias ls="eza --icons --group-directories-first"
+alias cat="bat"
+alias ..="cd .."
+alias gs="git status"
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias py="python3"
+alias nowtv="chromium --user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36'"
+
+# Comportamenti intelligenti
+setopt autocd
+setopt correct
+setopt notify
+
+# Angular CLI completamento per zsh
+autoload -U bashcompinit && bashcompinit
+source <(ng completion script)
